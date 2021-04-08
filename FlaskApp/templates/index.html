@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>AA WebApp Beta Car(DEMO)</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+ 
+
+</head>
+
+<body>
+ <div class="login">
+	<h2>Beta's Used Car Price Estimation</h2>
+     <!-- Main Input For Receiving Query to our ML -->
+     <img src="/static/logo.jpg" alt="Logo" width="50" height="62">
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="number" id="year" name="year" placeholder="Year" required="required" />
+        <div>
+            <label for="manufacturer"> Choose the manufacturer</label> <br>
+            <select id="manufacturer" name="manufacturer">
+            <option value="bmw">BMW</option>
+            <option value="honda">Honda</option>
+            <option value="toyota">Toyota</option>
+            <option value="mercedes-benz">Merdes Benz</option>
+            </select>
+        </div>
+        
+		<input type="number" id ="odometer" name="odometer" placeholder="Odometer Running" required="required" />
+		<div>
+            <label for="condition"> Choose the Condition</label>
+            </div>
+        <div>
+            <select id="condition" name="condition">
+            <option value="excellent">Excellent</option>
+            <option value="fair">Fair</option>
+            <option value="good">Good</option>
+            <option value="like new">Like New</option>
+            <option value="new">New</option>
+            <option value="salvage">Salvage</option>
+            </select>
+        </div>
+        <div>
+      <label for="fuel"> Choose the Fuel Type</label>
+      </div>
+      <div>
+      <select id="fuel" name="fuel">
+        <option value="diesel">Diesel</option>
+        <option value="electric">Electric</option>
+        <option value="gas">Gas</option>
+        <option value="hybrid">Hybrid</option>
+        <option value="other">other</option>
+      </select>
+      </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
